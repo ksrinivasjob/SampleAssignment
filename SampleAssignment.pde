@@ -18,24 +18,24 @@ void draw()
 
   yVel += 1;
 
+  xPos += xVel;
+  yPos += yVel;
+
   if (xPos + 10 >= 800) {
-  	xPos = 799;
+  	xPos = 789;
   	xVel *= -0.85;
   } else if (xPos - 10 <= 0) {
-  	xPos = 1;
+  	xPos = 11;
   	xVel *= -0.85;
   }
 
   if (yPos + 10 >= 800) {
-  	yPos = 799;
+  	yPos = 789;
   	yVel *= -0.85;
   } else if (yPos - 10 <= 0) {
-  	yPos = 1;
+  	yPos = 11;
   	yVel *= -0.85;
   }
-
-  xPos += xVel;
-  yPos += yVel;
 }
 
 void mouseClicked() {
