@@ -7,13 +7,28 @@ float yVD = 0;
 float xVel = 0;
 float yVel = 0;
 
+ArrayList<int[]> clickers;
+
 void setup()
 {
   size(800,800);
+  noStroke();
+
+  clickers = new ArrayList();
 }
 void draw()
 {
   background(100);
+
+  for (int i = 0; i < clickers.size(); i++) {
+  	int[] clicker = clickers.get(i);
+  	clicker[2] += 2;
+  	fill(200 - clicker[2]);
+  	ellipse(clicker[0], clicker[1], clicker[2] * 7, clicker[2] * 7);
+  	if (clicker[2] > 100) clickers.remove(clicker);
+  }
+
+  fill(255);
   ellipse(xPos, yPos, 20, 20);
 
   yVel += 1;
@@ -40,7 +55,10 @@ void draw()
 
 void mouseClicked() {
   xVel = random(1) > 0.5 ? random(-20, -10) : random(10, 20);
-  yVel += random(-30, -25);
+  yVel = Math.min(-20, yVel - 20);
+
+  int[] clicker = {mouseX, mouseY, 0};
+  clickers.add(clicker);
 }
 
 
